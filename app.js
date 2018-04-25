@@ -32,6 +32,46 @@ var bot = new builder.UniversalBot(connector, [
         session.send(`hello ${session.userData.profile.name} :-)`);
     }
 ]).set('storage', inMemoryStorage);
+var menuItems ={
+    "toto": {
+        item: 'dialog1'
+    },
+    "tata": {
+        item: 'dialog2'
+    },
+    "titi": {
+        item: 'dialog3'
+    }
+}
+bot.dialog('menu', [
+    function(session){
+        builder.Prompts.choice(session, 'select an option', menuItems, {listStyle: 3});
+    },
+    
+    function(session, results){
+        var choice = results.response.entity;
+        var item = menuItems[choice].item;
+        session.send(item);
+    }
+]);
+
+bot.dialog('dialog1', [
+    function(session){
+        session.send('You are inside dialog1');
+    }
+]);
+
+bot.dialog('dialog2', [
+    function(session){
+        session.send('You are inside dialog2');
+    }
+]);
+
+bot.dialog('dialog3', [
+    function(session){
+        session.send('You are inside dialog3');
+    }
+]);
 
 bot.dialog('greetings', [
     // Step 1

@@ -33,3 +33,7 @@
 
 # running server and acces with Bot Framework Emulator
 - nodemon app.js
+
+# API spaceX
+- npm install spacex-api-wrapper --save
+- npm install adaptivecards --save
