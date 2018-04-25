@@ -1,5 +1,7 @@
 # install following
-- node
+- node v8+
+    - curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+    - sudo apt-get install -y nodejs
 - vs code (extension: TSLint, DOTEnv, VS code icons)
 
 # download bot emulator: 
@@ -20,5 +22,14 @@
 # start bot and test him
 - node app.js
 
-# command
+# refresh when you save
 - sudo npm install nodemon -g
+
+# install local web server
+- npm install restify --save
+
+# use environment variables
+- npm install dotenv --save
+
+# running server and acces with Bot Framework Emulator
+- nodemon app.js
