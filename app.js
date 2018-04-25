@@ -23,7 +23,9 @@ var inMemoryStorage = new builder.MemoryBotStorage();
 var bot = new builder.UniversalBot(connector, [
     function(session){
         session.send("Hey");
-        session.beginDialog('greetings', session.userData.profile);
+        
+        //session.beginDialog('greetings', session.userData.profile);
+        session.beginDialog('menu');
     },
     function(session, results){
         if(!session.userData.profile){
@@ -51,11 +53,11 @@ bot.dialog('menu', [
     function(session, results){
         var choice = results.response.entity;
         var item = menuItems[choice].item;
-        session.send(item);
+        session.beginDialog(item);
     }
 ]);
 
-bot.dialog('dialog1', [
+bot.dialog('getCompanyInfo', [
     function(session){
         session.send('You are inside dialog1');
     }
